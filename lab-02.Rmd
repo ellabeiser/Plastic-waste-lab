@@ -1,7 +1,7 @@
 ---
 title: "Lab 02 - Plastic waste"
-author: "Insert your name here"
-date: "Insert date here"
+author: "Ella Beiser"
+date: "January 27, 2022"
 output: github_document
 ---
 
@@ -17,23 +17,51 @@ plastic_waste <- read_csv("data/plastic-waste.csv")
 
 ## Exercises
 
+```{r}
+plastic_waste <- read_csv("data/plastic-waste.csv")
+ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram(binwidth = 0.2)
+plastic_waste %>%
+  filter(plastic_waste_per_cap > 3.5)
+```
+Trinidad and Tobago produce the most waste per capita per day in the world according to a report by Forbes. Additionally, their waste is improperly managed and likely to end up in the ocean.
+
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
+The density plot below shows that the majority of countries in Africa have very low plastic waste per capita with the majority producing 0.1 kilograms per capita. In contrast, Europe has a wide range of plastic waste production with the majority ranging from 0.15-0.27 kilograms per capita. The plot also indicates that each continent has a number of outliers who produce significantly more plastic waste per capita than the rest.  
 
 ```{r plastic-waste-continent}
-# insert code here
+#Below is a histogram of plastic waste faceted
+ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram()
+#Below is a density plot with color!
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent, 
+                     fill = continent)) +
+  geom_density(alpha = 0.7)
 ```
 
 ### Exercise 2
-
 ```{r plastic-waste-density}
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     color = continent, 
+                     fill = continent)) +
+  geom_density(alpha = 0.4) +
+  xlim(0, 1)
 ```
 
 ### Exercise 3
 
-Remove this text, and add your answer for Exercise 3 here.
+The color and fill of the curves are defined by the mapping aesthetic because they are dependent on the data and it is not consistent across the board. In contrast, the alpha level is a characteristic of the plotting geom because the alpha is a consistent level for the entire plot. 
+
+```{r}
+ggplot(data = plastic_waste, 
+       mapping = aes(x = continent, 
+                     y = plastic_waste_per_cap)) +
+  geom_boxplot()
+```
 
 ### Exercise 4
 
