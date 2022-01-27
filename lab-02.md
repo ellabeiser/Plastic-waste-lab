@@ -126,44 +126,105 @@ ggplot(data = plastic_waste,
 
 ### Exercise 4
 
-Remove this text, and add your answer for Exercise 4 here.
+The box plot automatically calculates summary statistics like the mean,
+outliers etc and indicates them on the graph. Whereas in the violin
+plot, the plot shows approximately where the mean would be but it is
+less clear.
 
 ``` r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = continent, 
+                     y = plastic_waste_per_cap)) +
+  geom_violin()
 ```
+
+    ## Warning: Removed 51 rows containing non-finite values (stat_ydensity).
+
+![](lab-02_files/figure-gfm/plastic-waste-violin-1.png)<!-- -->
 
 ### Exercise 5
 
-Remove this text, and add your answer for Exercise 5 here.
+This scatterplot shows that as plastic waste increases, mismanaged
+plastic waste also increases. The rate at which it increases varies
+significantly. There is also an outlier with significant plastic waste
+but lower mismanaged plastic waste per capita.
 
 ``` r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     y = mismanaged_plastic_waste_per_cap)) +
+  geom_point()
 ```
+
+    ## Warning: Removed 51 rows containing missing values (geom_point).
+
+![](lab-02_files/figure-gfm/plastic-waste-mismanaged-1.png)<!-- -->
 
 ### Exercise 6
 
-Remove this text, and add your answer for Exercise 6 here.
+With color, it becomes more evident the relationship between plastic
+waste and mismanaged plastic waste per capita. For Africa it appears as
+if there is a strong positive correlation between the two. The rest of
+the continents are less clear.
 
 ``` r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = plastic_waste_per_cap, 
+                     y = mismanaged_plastic_waste_per_cap, color = continent, fill = continent)) +
+  geom_point()
 ```
+
+    ## Warning: Removed 51 rows containing missing values (geom_point).
+
+![](lab-02_files/figure-gfm/plastic-waste-mismanaged-continent-1.png)<!-- -->
 
 ### Exercise 7
 
-Remove this text, and add your answer for Exercise 7 here.
+The relationship between the coastal populations and plastic waste per
+capita appear to be more linearly associated.
 
 ``` r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = total_pop, 
+                     y = plastic_waste_per_cap)) +
+  geom_point()
 ```
 
+    ## Warning: Removed 61 rows containing missing values (geom_point).
+
+![](lab-02_files/figure-gfm/plastic-waste-population-total-1.png)<!-- -->
+
 ``` r
-# insert code here
+ggplot(data = plastic_waste, 
+       mapping = aes(x = coastal_pop, 
+                     y = plastic_waste_per_cap)) +
+  geom_point()
 ```
+
+    ## Warning: Removed 51 rows containing missing values (geom_point).
+
+![](lab-02_files/figure-gfm/plastic-waste-population-coastal-1.png)<!-- -->
 
 ### Exercise 8
 
-Remove this text, and add your answer for Exercise 8 here.
+From this plot we can interpret that until the coastal population
+proportion reaches 0.75 the plastic waste per capita increases with it
+but after that point it levels off and slowly declines. Additionally,
+the vast majority of countries have a coast population proportion below
+1.0.
 
 ``` r
-# insert code here
+ggplot(data = plastic_waste) +
+  geom_point(mapping = aes(x = coastal_pop/plastic_waste_per_cap, 
+                     y = plastic_waste_per_cap, color = continent)) +
+  geom_smooth(mapping = aes(x = coastal_pop/plastic_waste_per_cap, 
+                     y = plastic_waste_per_cap))+ ylim(0, 0.7) + xlim(0, 2.0e+07) + labs(x = "Coastal population proportion (Coastal / total population)", y="Plastic waste per capita", title = "Plastic waste vs Coastal population proportion", subtitle = "by continent", color = "Continent") 
 ```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+    ## Warning: Removed 141 rows containing non-finite values (stat_smooth).
+
+    ## Warning: Removed 141 rows containing missing values (geom_point).
+
+![](lab-02_files/figure-gfm/recreate-viz-1.png)<!-- -->
