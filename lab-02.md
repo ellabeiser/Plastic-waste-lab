@@ -57,7 +57,13 @@ improperly managed and likely to end up in the ocean.
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
+The density plot below shows that the majority of countries in Africa
+have very low plastic waste per capita with the majority producing 0.1
+kilograms per capita. In contrast, Europe has a wide range of plastic
+waste production with the majority ranging from 0.15-0.27 kilograms per
+capita. The plot also indicates that each continent has a number of
+outliers who produce significantly more plastic waste per capita than
+the rest.
 
 ``` r
 #Below is a histogram of plastic waste faceted
@@ -91,10 +97,11 @@ ggplot(data = plastic_waste,
        mapping = aes(x = plastic_waste_per_cap, 
                      color = continent, 
                      fill = continent)) +
-  geom_density(alpha = 0.4)
+  geom_density(alpha = 0.4) +
+  xlim(0, 1)
 ```
 
-    ## Warning: Removed 51 rows containing non-finite values (stat_density).
+    ## Warning: Removed 52 rows containing non-finite values (stat_density).
 
 ![](lab-02_files/figure-gfm/plastic-waste-density-1.png)<!-- -->
 
