@@ -218,15 +218,15 @@ ggplot(data = plastic_waste) +
   geom_point(mapping = aes(x = coastal_pop/total_pop, 
                      y = plastic_waste_per_cap, color = continent)) +
   geom_smooth(mapping = aes(x = coastal_pop/total_pop, 
-                     y = plastic_waste_per_cap))+ ylim(0, 0.7) + xlim(0, 1.75) +
-  labs(x = "Coastal population proportion (Coastal / total population)", y="Plastic waste per capita", title = "Plastic waste vs coastal proportion", subtitle = "by continent", color = "Continent") +
+                     y = plastic_waste_per_cap)) + ylim(0, 0.7) + xlim(0, 1.5) +
+  labs(x = "Coastal population proportion (Coastal / total population)", y = "Plastic waste per capita", title = "Plastic waste vs coastal proportion", subtitle = "by continent", color = "Continent") +
 scale_colour_viridis_d()
 ```
 
     ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 
-    ## Warning: Removed 62 rows containing non-finite values (stat_smooth).
+    ## Warning: Removed 64 rows containing non-finite values (stat_smooth).
 
-    ## Warning: Removed 62 rows containing missing values (geom_point).
+    ## Warning: Removed 64 rows containing missing values (geom_point).
 
 ![](lab-02_files/figure-gfm/recreate-viz-1.png)<!-- -->
