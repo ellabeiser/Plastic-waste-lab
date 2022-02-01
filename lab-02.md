@@ -215,16 +215,16 @@ the vast majority of countries have a coast population proportion below
 
 ``` r
 ggplot(data = plastic_waste) +
-  geom_point(mapping = aes(x = coastal_pop/plastic_waste_per_cap, 
+  geom_point(mapping = aes(x = coastal_pop/total_pop, 
                      y = plastic_waste_per_cap, color = continent)) +
-  geom_smooth(mapping = aes(x = coastal_pop/plastic_waste_per_cap, 
-                     y = plastic_waste_per_cap))+ ylim(0, 0.7) + xlim(0, 2.0e+07) + labs(x = "Coastal population proportion (Coastal / total population)", y="Plastic waste per capita", title = "Plastic waste vs Coastal population proportion", subtitle = "by continent", color = "Continent") 
+  geom_smooth(mapping = aes(x = coastal_pop/total_pop, 
+                     y = plastic_waste_per_cap))+ ylim(0, 0.7) + xlim(0, 1.75) + labs(x = "Coastal population proportion (Coastal / total population)", y="Plastic waste per capita", title = "Plastic waste vs Coastal population proportion", subtitle = "by continent", color = "Continent") 
 ```
 
     ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 
-    ## Warning: Removed 141 rows containing non-finite values (stat_smooth).
+    ## Warning: Removed 62 rows containing non-finite values (stat_smooth).
 
-    ## Warning: Removed 141 rows containing missing values (geom_point).
+    ## Warning: Removed 62 rows containing missing values (geom_point).
 
 ![](lab-02_files/figure-gfm/recreate-viz-1.png)<!-- -->
